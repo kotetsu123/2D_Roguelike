@@ -63,8 +63,17 @@ public class EnemyController : MonoBehaviour
         {
             GameObject player = collision.gameObject;
             player.GetComponent<PlayerController>().TakeDamage(damageAmount);
-           
-            gameObject.SetActive(false);
+
+
+            Die();
         }
     }
+    private void Die()
+    {
+        IsDead = true;
+        
+        gameObject.SetActive(false);
+      
+    }
+    
 }

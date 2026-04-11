@@ -97,7 +97,16 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-
+            StartCoroutine(HitEffect());
         }
+    }
+    private IEnumerator HitEffect()
+    {
+        _sprite.color = Color.red;
+
+        yield return new WaitForSeconds(0.2f);
+
+        _sprite.color = Color.white;
+
     }
 }
