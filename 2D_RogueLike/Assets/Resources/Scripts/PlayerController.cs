@@ -64,12 +64,40 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Die();
+        }
 
+    }
+    private void Die()
+    {
+        isDead = true;
+        playerAni.SetTrigger("IsDeath");
+        GetComponent<Collider2D>().enabled=false;
+    }
+    public void HideAfterAnim()
+    {
+        gameObject.SetActive(false);
     }
     private void FixedUpdate()
     {
         //rd.AddForce(moveDerection *speed*Time.deltaTime);
+        if (isDead) return;
         rd.MovePosition(rd.position+moveDerection * speed * Time.deltaTime);
+    }
+    public void TakeDamage(int DMGAmount)
+    {
+        currentHealth -= DMGAmount;
+        Debug.Log($"[DMG] current Player Hp is{currentHealth}");
 
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+        else
+        {
+
+        }
     }
 }
