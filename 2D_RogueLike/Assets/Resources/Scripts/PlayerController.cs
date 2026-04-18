@@ -13,11 +13,15 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rd;
     private SpriteRenderer _sprite;
     private Animator playerAni;
-    
 
+
+    [SerializeField] private GameObject syurikenPrefab;
+    
     private bool IsWalk;
     private bool isDead=false;
 
+    public bool IsDead => isDead;
+   
     // Start is called before the first frame update
     private void Awake()
     {
@@ -66,7 +70,9 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Die();
+            // Die();
+
+           // syurikenPrefab.GetComponent<SyuRiKen>().initialize();
         }
 
     }
